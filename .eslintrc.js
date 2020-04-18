@@ -27,17 +27,18 @@ module.exports = {
     'prettier/prettier': 'error',
     'class-methods-use-this': 'off',
     'import/extensions': ['error', 'ignorePackages', { 'ts': 'never' }],
-    'lines-between-class-members': 'off',
+    // 'lines-between-class-members': 'off',
     'max-len': ['error', { 'code': 120 }],
     'no-console': 'off',
+    '@typescript-eslint/camelcase': 'off',
 
     /** All rules
       'arrow-body-style': ['error', 'as-needed'],
       'arrow-parens': ['error', 'as-needed'],
-      'camelcase': 'off',
       'global-require': 'off',
       'import/prefer-default-export': 'off',
       'import/no-cycle': 'off',
+      'camelcase': 'off',
       'no-param-reassign': 'off',
       'no-shadow': 'off',
       'no-await-in-loop': 'off',
@@ -57,9 +58,7 @@ module.exports = {
       'template-curly-spacing': ['error', 'always'],
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/camelcase': 'off',
     */
-
 
     'import-helpers/order-imports': [
       'warn',

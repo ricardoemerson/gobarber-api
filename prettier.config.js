@@ -2,5 +2,5 @@ module.exports = {
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'avoid',
-  printWidth: 140,
+  printWidth: 120,
 };
