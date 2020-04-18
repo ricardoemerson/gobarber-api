@@ -4,6 +4,8 @@ import { getRepository } from 'typeorm';
 
 import User from '../models/User.model';
 
+import authConfig from '../config/auth';
+
 interface Request {
   email: string;
   password: string;
@@ -25,9 +27,11 @@ class AuthenticateUserService {
       throw new Error('O email ou senha são inválidos!');
     }
 
-    const token = sign({}, '6a693bdc4cc4ce589ca1327bca29968e', {
+    const { secret, expiresIn } = authConfig.jwt;
+
+    const token = sign({}, secret, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn,
     });
 
     return { user, token };
