@@ -25,16 +25,16 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
-    'no-console': 'off',
-    'lines-between-class-members': 'off',
+    'class-methods-use-this': 'off',
     'import/extensions': ['error', 'ignorePackages', { 'ts': 'never' }],
+    'lines-between-class-members': 'off',
     'max-len': ['error', { 'code': 120 }],
+    'no-console': 'off',
 
     /** All rules
       'arrow-body-style': ['error', 'as-needed'],
       'arrow-parens': ['error', 'as-needed'],
       'camelcase': 'off',
-      'class-methods-use-this': 'off',
       'global-require': 'off',
       'import/prefer-default-export': 'off',
       'import/no-cycle': 'off',
