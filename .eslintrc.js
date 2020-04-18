@@ -30,6 +30,8 @@ module.exports = {
     // 'lines-between-class-members': 'off',
     'max-len': ['error', { 'code': 120 }],
     'no-console': 'off',
+    'object-curly-spacing': ['error', 'always'],
+    // 'template-curly-spacing': ['error', 'always'],
     '@typescript-eslint/camelcase': 'off',
 
     /** All rules
@@ -51,11 +53,9 @@ module.exports = {
       'no-unused-expressions': ['error', { 'allowTaggedTemplates': true }],
       'no-unused-vars': ['error', { 'argsIgnorePattern': 'next' }],
       'no-use-before-define': ['error', { 'variables': false }],
-      'object-curly-spacing': ['error', 'always'],
       'object-curly-newline': ['error', {
         'ObjectPattern': { 'multiline': false, 'minProperties': 6 },
       }],
-      'template-curly-spacing': ['error', 'always'],
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/no-explicit-any': 'off',
     */

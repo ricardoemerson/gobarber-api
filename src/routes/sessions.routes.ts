@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { getRepository } from 'typeorm';
 
-import User from '../models/User.model';
-import AuthenticateUserService from '../services/AuthenticateUser.service';
+import User from '../models/User';
+import AuthenticateUserService from '../services/AuthenticateUserService';
 
 const sessionsRouter = Router();
 

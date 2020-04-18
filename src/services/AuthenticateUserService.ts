@@ -2,7 +2,7 @@ import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { getRepository } from 'typeorm';
 
-import User from '../models/User.model';
+import User from '../models/User';
 
 import authConfig from '../config/auth';
 
@@ -14,7 +14,6 @@ interface Request {
 class AuthenticateUserService {
   async execute({ email, password }: Request): Promise<{ user: User; token: string }> {
     const usersRepository = getRepository(User);
-
     const user = await usersRepository.findOne({ where: { email } });
 
     if (!user) {
