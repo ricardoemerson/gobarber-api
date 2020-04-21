@@ -3,6 +3,8 @@ import { getRepository } from 'typeorm';
 
 import User from '../models/User';
 
+import AppError from '../errors/AppError';
+
 interface Request {
   name: string;
   email: string;
@@ -15,7 +17,7 @@ class CreateUserService {
     const checkUserExists = await usersRepository.findOne({ where: { email } });
 
     if (checkUserExists) {
-      throw new Error('O e-mail informado já está sendo utilizado!');
+      throw new AppError('O e-mail informado já está sendo utilizado!');
     }
 
     const hashedPassword = await hash(password, 8);

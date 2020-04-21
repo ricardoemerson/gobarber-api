@@ -27,12 +27,15 @@ module.exports = {
     'prettier/prettier': 'error',
     'class-methods-use-this': 'off',
     'import/extensions': ['error', 'ignorePackages', { 'ts': 'never' }],
-    // 'lines-between-class-members': 'off',
+    'lines-between-class-members': 'off',
     'max-len': ['error', { 'code': 120 }],
     'no-console': 'off',
     'object-curly-spacing': ['error', 'always'],
     // 'template-curly-spacing': ['error', 'always'],
     '@typescript-eslint/camelcase': 'off',
+    '@typescript-eslint/no-unused-vars': ['error', {
+      argsIgnorePattern: 'next'
+    }],
 
     /** All rules
       'arrow-body-style': ['error', 'as-needed'],

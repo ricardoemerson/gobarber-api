@@ -3,6 +3,8 @@ import { verify } from 'jsonwebtoken';
 
 import authConfig from '../config/auth';
 
+import AppError from '../errors/AppError';
+
 interface TokenPayload {
   iat: number;
   exp: number;
@@ -13,7 +15,7 @@ export default function ensureAuthenticated(request: Request, response: Response
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new Error('Token de autenticação JWT não informado na requisição!');
+    throw new AppError('Token de autenticação JWT não informado na requisição!', 400);
   }
 
   const [, token] = authHeader.split(' ');
@@ -28,6 +30,6 @@ export default function ensureAuthenticated(request: Request, response: Response
 
     return next();
   } catch {
-    throw new Error('Token JWT inválido!');
+    throw new AppError('Token JWT inválido!', 401);
   }
 }

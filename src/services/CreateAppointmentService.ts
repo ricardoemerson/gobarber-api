@@ -5,6 +5,8 @@ import { startOfHour } from 'date-fns';
 import Appointment from '../models/Appointment';
 import AppointmentsRepository from '../repositories/AppointmentsRepository';
 
+import AppError from '../errors/AppError';
+
 interface Request {
   provider_id: string;
   date: Date;
@@ -18,7 +20,7 @@ class CreateAppointmentService {
     const findAppointmentInSameDate = await appointmentsRepository.findByDate(appointmentDate);
 
     if (findAppointmentInSameDate) {
-      throw new Error('Horário de agendamento indisponível.');
+      throw new AppError('Horário de agendamento indisponível.');
     }
 
     const appointment = appointmentsRepository.create({ provider_id, date: appointmentDate });
