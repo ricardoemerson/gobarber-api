@@ -1,22 +1,28 @@
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
-import { getRepository } from 'typeorm';
+import { injectable, inject } from 'tsyringe';
 
 import authConfig from '@config/auth';
 
 import AppError from '@shared/errors/AppError';
 
 import User from '../infra/typeorm/entities/User';
+import IUsersRepository from '../repositories/IUsersRepository';
 
-interface Request {
+interface IRequest {
   email: string;
   password: string;
 }
 
+@injectable()
 class AuthenticateUserService {
-  async execute({ email, password }: Request): Promise<{ user: User; token: string }> {
-    const usersRepository = getRepository(User);
-    const user = await usersRepository.findOne({ where: { email } });
+  constructor(
+    @inject('UsersRepository')
+    private usersRepository: IUsersRepository,
+  ) { }
+
+  async execute({ email, password }: IRequest): Promise<{ user: User; token: string }> {
+    const user = await this.usersRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('O email ou senha são inválidos!', 401);
