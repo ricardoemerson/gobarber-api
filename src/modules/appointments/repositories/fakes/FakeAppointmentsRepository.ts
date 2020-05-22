@@ -6,7 +6,7 @@ import IAppointmentsRepostory from '@modules/appointments/repositories/IAppointm
 
 import Appointment from '../../infra/typeorm/entities/Appointment';
 
-class AppointmentsRepository implements IAppointmentsRepostory {
+class FakeAppointmentsRepository implements IAppointmentsRepostory {
   private appointments: Appointment[] = [];
 
   async findByDate(date: Date): Promise<Appointment | undefined> {
@@ -26,4 +26,4 @@ class AppointmentsRepository implements IAppointmentsRepostory {
   }
 }
 
-export default AppointmentsRepository;
+export default FakeAppointmentsRepository;

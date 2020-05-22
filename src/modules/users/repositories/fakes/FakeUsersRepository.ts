@@ -6,7 +6,7 @@ import IUsersRepostory from '@modules/users/repositories/IUsersRepository';
 import User from '../../infra/typeorm/entities/User';
 
 
-class UsersRepository implements IUsersRepostory {
+class FakeUsersRepository implements IUsersRepostory {
   private users: User[] = [];
 
   async findById(id: string): Promise<User | undefined> {
@@ -40,4 +40,4 @@ class UsersRepository implements IUsersRepostory {
   }
 }
 
-export default UsersRepository;
+export default FakeUsersRepository;

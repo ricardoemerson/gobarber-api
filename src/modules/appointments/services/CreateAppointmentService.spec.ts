@@ -6,6 +6,7 @@ import CreateAppointmentService from './CreateAppointmentService';
 describe('CeateAppointment', () => {
   it('should be abble to ceate a new appointment', async () => {
     const fakeAppointmentsRepository = new FakeAppointmentsRepository();
+
     const createAppointment = new CreateAppointmentService(fakeAppointmentsRepository);
 
     const appointment = await createAppointment.execute({

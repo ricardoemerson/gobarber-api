@@ -44,13 +44,10 @@
     "@typescript-eslint/no-unused-vars": ["error", {
       "argsIgnorePattern": "next"
     }],
-    "semi":"off",
     "@typescript-eslint/interface-name-prefix": ["error", { "prefixWithI": "always" }],
     "no-useless-constructor": "off",
-    // "object-curly-newline": ["error", {
-    //     "ObjectPattern": { "multiline": false, "minProperties": 6 },
-    // }],
-
+    "semi": "off",
+    "@typescript-eslint/semi": ["error"],
 
     /**
       "arrow-body-style": "off",
