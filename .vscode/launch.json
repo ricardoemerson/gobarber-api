@@ -22,8 +22,8 @@
       "request": "launch",
       "name": "Jest single run all tests",
       "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
-      "env": { "CI": "true" },
       "args": [
+        "--runInBand",
         "-c",
         "./jest.config.js",
         "--verbose",
@@ -36,14 +36,32 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Jest watch all tests",
-      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "name": "Jest single run current file",
+      "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": [
+        "${fileBasename}",
+        "--runInBand",
         "-c",
         "./jest.config.js",
         "--verbose",
         "-i",
         "--no-cache",
+      ],
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Jest watch all tests",
+      "program": "${workspaceRoot}/node_modules/jest/bin/jest.js",
+      "args": [
+        "--runInBand",
+        "-c",
+        "./jest.config.js",
+        "--verbose",
+        "-i",
+        // "--no-cache",
         "--watchAll"
       ],
       "console": "integratedTerminal",
@@ -56,11 +74,12 @@
       "program": "${workspaceFolder}/node_modules/jest/bin/jest",
       "args": [
         "${fileBasename}",
+        "--runInBand",
         "-c",
         "./jest.config.js",
         "--verbose",
         "-i",
-        "--no-cache",
+        // "--no-cache",
         "--watchAll"
       ],
       "console": "integratedTerminal",
