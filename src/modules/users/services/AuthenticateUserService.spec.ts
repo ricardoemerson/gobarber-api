@@ -35,7 +35,7 @@ describe('AuthenticateUser', () => {
     expect(response.user).toEqual(user);
   });
 
-  it('should not be able to authenticate with non existing user', async () => {
+  it('should not be able to authenticate with non-existing user', async () => {
     await expect(
       authenticateUser.execute({
         email: 'johndoe@example.com',
