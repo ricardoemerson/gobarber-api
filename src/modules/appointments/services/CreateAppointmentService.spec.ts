@@ -15,6 +15,7 @@ describe('CeateAppointment', () => {
   it('should be able to ceate a new appointment', async () => {
     const appointment = await createAppointment.execute({
       provider_id: '123123',
+      user_id: 'user',
       date: new Date(),
     });
 
@@ -27,11 +28,13 @@ describe('CeateAppointment', () => {
 
     await createAppointment.execute({
       provider_id: '123123',
+      user_id: 'user',
       date: appointmentDate,
     });
 
     await expect(createAppointment.execute({
       provider_id: '123123',
+      user_id: 'user',
       date: appointmentDate,
     })).rejects.toBeInstanceOf(AppError);
   });
