@@ -3,11 +3,11 @@ import { Repository, getRepository, Raw } from 'typeorm';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
-import IAppointmentsRepostory from '@modules/appointments/repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
 import Appointment from '../entities/Appointment';
 
-class AppointmentsRepository implements IAppointmentsRepostory {
+class AppointmentsRepository implements IAppointmentsRepository {
   private ormRepository: Repository<Appointment>;
 
   constructor() {
@@ -25,10 +25,12 @@ class AppointmentsRepository implements IAppointmentsRepostory {
   ): Promise<Appointment[]> {
     const parsedMonth = String(month).padStart(2, '0');
 
-    const appointments = this.ormRepository.find({
+    const appointments = await this.ormRepository.find({
       where: {
         provider_id,
-        date: Raw(dateFieldName => `to_char(${ dateFieldName }, 'MM-YYYY ) = '${ parsedMonth }-${ year }'`),
+        date: Raw(
+          dateFieldName => `to_char(${ dateFieldName }, 'MM-YYYY') = '${ parsedMonth }-${ year }'`,
+        ),
       },
     });
 
@@ -41,10 +43,12 @@ class AppointmentsRepository implements IAppointmentsRepostory {
     const parsedDay = String(day).padStart(2, '0');
     const parsedMonth = String(month).padStart(2, '0');
 
-    const appointments = this.ormRepository.find({
+    const appointments = await this.ormRepository.find({
       where: {
         provider_id,
-        date: Raw(dateFieldName => `to_char(${ dateFieldName }, 'DD-MM-YYYY ) = '${ parsedDay }-${ parsedMonth }-${ year }'`),
+        date: Raw(
+          dateFieldName => `to_char(${ dateFieldName }, 'DD-MM-YYYY') = '${ parsedDay }-${ parsedMonth }-${ year }'`,
+        ),
       },
     });
 

@@ -4,11 +4,11 @@ import { uuid } from 'uuidv4';
 import ICreateAppointmentDTO from '@modules/appointments/dtos/ICreateAppointmentDTO';
 import IFindAllInDayFromProviderDTO from '@modules/appointments/dtos/IFindAllInDayFromProviderDTO';
 import IFindAllInMonthFromProviderDTO from '@modules/appointments/dtos/IFindAllInMonthFromProviderDTO';
-import IAppointmentsRepostory from '@modules/appointments/repositories/IAppointmentsRepository';
+import IAppointmentsRepository from '@modules/appointments/repositories/IAppointmentsRepository';
 
 import Appointment from '../../infra/typeorm/entities/Appointment';
 
-class FakeAppointmentsRepository implements IAppointmentsRepostory {
+class FakeAppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
 
   async findByDate(date: Date): Promise<Appointment | undefined> {
