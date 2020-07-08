@@ -1,3 +1,4 @@
+import { classToClass } from 'class-transformer';
 import { injectable, inject } from 'tsyringe';
 
 import ICacheProvider from '@shared/container/providers/CacheProvider/models/ICacheProvider';
@@ -25,7 +26,7 @@ class ListProvidersService {
     if (!users) {
       users = await this.usersRepository.findAllProviders({ except_user_id: user_id });
 
-      await this.cacheProvider.save(`providers-list:${ user_id }`, JSON.stringify(users));
+      await this.cacheProvider.save(`providers-list:${ user_id }`, classToClass(users));
     }
 
     return users;
