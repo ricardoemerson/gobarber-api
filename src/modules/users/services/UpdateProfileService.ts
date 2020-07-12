@@ -61,6 +61,7 @@ class UpdateProfileService {
       user.password = await this.hashProvider.generateHash(password);
     }
 
+    await this.cacheProvider.invalidatePrefix(`providers-list:${ user_id }`);
     await this.cacheProvider.invalidatePrefix(`provider-appointments:${ user_id }`);
 
     return this.usersRepository.save(user);
